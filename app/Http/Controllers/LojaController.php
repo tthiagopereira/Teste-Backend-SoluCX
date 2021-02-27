@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Avalicao;
+use App\Models\Loja;
 
 class LojaController extends Controller
 {
@@ -13,7 +14,7 @@ class LojaController extends Controller
      */
     public function __construct()
     {
-        $this->class = Avalicao::class;
+        $this->class = Loja::class;
     }
 
     //

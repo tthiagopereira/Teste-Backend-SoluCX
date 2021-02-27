@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Avalicao;
+use App\Models\Transacao;
 
 class TransacaoController extends Controller
 {
 
     public function __construct()
     {
-        $this->class = Avalicao::class;
+        $this->class = Transacao::class;
     }
 
 }

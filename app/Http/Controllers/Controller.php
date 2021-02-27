@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Cliente;
 use App\Models\Avalicao;
+use App\Models\Colaborador;
+use App\Models\Loja;
+use App\Models\Transacao;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Routing\Controller as BaseController;
@@ -36,9 +39,9 @@ class Controller extends BaseController
             ]);
         }
 
-        if($this->class == Avalicao::class) {
+        if($this->class == Transacao::class) {
             $this->validate($request, [
-                'data' => 'data',
+                'data' => 'date',
                 'valor'=> 'numeric|min:1|',
             ]);
         }
@@ -49,6 +52,7 @@ class Controller extends BaseController
     public function update(Request $request, $id) {
 
         if($this->class ==  Cliente::class){
+
             $this->validate($request, [
                 'nome' => 'required',
                 'email' => 'required|email|unique:clientes',
@@ -57,18 +61,19 @@ class Controller extends BaseController
             ]);
         }
 
-        if($this->class == Avalicao::class) {
+        if($this->class == Transacao::class) {
             $this->validate($request, [
-                'data' => 'data',
+                'data' => 'date',
                 'valor'=> 'numeric|min:1|',
             ]);
         }
 
 
         $register = $this->class::find($id);
-        if(is_null($register)) {
+        if(!$register) {
             return response()->json(['erro'=>'Não existe'],404);
         }
+
         $register->fill($request->all());
         $register->save();
         return $register;
@@ -81,4 +86,5 @@ class Controller extends BaseController
         }
         return response()->json('',204);
     }
+
 }
