@@ -15,4 +15,9 @@ class Colaborador extends Model
     protected $fillable = [
         'nome'
     ];
+
+    public function transacoes()
+    {
+        return $this->belongsToMany(Transacao::class);
+    }
 }

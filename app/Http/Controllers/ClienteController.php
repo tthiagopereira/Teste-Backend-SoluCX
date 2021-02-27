@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use App\Models\Loja;
+use App\Models\Avalicao;
 
 class ClienteController extends Controller
 {

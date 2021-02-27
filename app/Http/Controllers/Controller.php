@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cliente;
-use App\Models\Loja;
+use App\Models\Avalicao;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
 use Laravel\Lumen\Routing\Controller as BaseController;
 
 class Controller extends BaseController
 {
+
     protected $class;
 
     public function index() {
@@ -35,6 +36,13 @@ class Controller extends BaseController
             ]);
         }
 
+        if($this->class == Avalicao::class) {
+            $this->validate($request, [
+                'data' => 'data',
+                'valor'=> 'numeric|min:1|',
+            ]);
+        }
+
         return response()->json($this->class::create($request->all()), 201);
     }
 
@@ -48,6 +56,14 @@ class Controller extends BaseController
                 'cpf' => 'required|unique:clientes'
             ]);
         }
+
+        if($this->class == Avalicao::class) {
+            $this->validate($request, [
+                'data' => 'data',
+                'valor'=> 'numeric|min:1|',
+            ]);
+        }
+
 
         $register = $this->class::find($id);
         if(is_null($register)) {
