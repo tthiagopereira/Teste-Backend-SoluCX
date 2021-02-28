@@ -24,7 +24,7 @@
 
 
 * sudo docker-compose up -d nginx mysql phpmyadmin
-* sudo docker-compose exec --user-laradock worlspace bash
+* sudo docker-compose exec --user=laradock workspace bash
 
 # Criar banco de dados
 
