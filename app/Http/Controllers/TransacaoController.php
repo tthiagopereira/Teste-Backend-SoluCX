@@ -61,6 +61,6 @@ class TransacaoController extends Controller
         }
         $register->fill($request->All());
         $register->update();
-        return response()->json($register   );
+        return response()->json($register);
     }
 }
